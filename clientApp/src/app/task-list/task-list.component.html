@@ -1,0 +1,68 @@
+<table class="table">
+    <colgroup>
+      <col style="max-width:33%;">
+      <col style="max-width:33%;">
+      <col style="max-width:33%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align:center;">Do zrobienia</th>
+        <th style="text-align:center;">W trakcie</th>
+        <th style="text-align:center;">Zrobione</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>
+          <div *ngIf="task.toDo"  class="panel panel-info" style="height:100%;width:100%;">
+            <div class="panel-heading">{{task.toDo.name}}</div>
+            <div class="panel-body">
+                  <img class="img-responsive center-block" src="../assets/images/Menu.ico" style="width:32px;height:32px;">
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <div class="pull-right">
+                  <a href="#" class="next round">&#8250;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      <td >
+        <div *ngIf="task.inProgress" class="panel panel-warning" style="height:100%;width:100%;">
+          <div class="panel-heading">{{task.inProgress.name}}</div>
+          <div class="panel-body">
+              <img class="img-responsive center-block" src="../assets/images/Menu.ico" style="width:32px;height:32px;">
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="pull-left">
+                <a href="#" class="next round">&#8249;</a>
+              </div>
+              <div class="pull-right" >
+                <a href="#" class="next round">&#8250;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    <td >
+      <div *ngIf="task.done" class="panel panel-success" style="height:100%;width:100%;">
+        <div class="panel-heading">{{task.done.name}}</div>
+        <div class="panel-body">
+            <img class="img-responsive center-block" src="../assets/images/Menu.ico" style="width:32px;height:32px;">
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="pull-left">
+              <a href="#" class="next round">&#8249;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+        
+      </tr>
+      
+    </tbody>
+  </table>

@@ -1,0 +1,10 @@
+C:\evidenceApp\bin\Debug\netcoreapp2.0\evidenceApp.deps.json
+C:\evidenceApp\bin\Debug\netcoreapp2.0\evidenceApp.runtimeconfig.json
+C:\evidenceApp\bin\Debug\netcoreapp2.0\evidenceApp.runtimeconfig.dev.json
+C:\evidenceApp\bin\Debug\netcoreapp2.0\evidenceApp.dll
+C:\evidenceApp\bin\Debug\netcoreapp2.0\evidenceApp.pdb
+C:\evidenceApp\obj\Debug\netcoreapp2.0\evidenceApp.csproj.CoreCompileInputs.cache
+C:\evidenceApp\obj\Debug\netcoreapp2.0\evidenceApp.AssemblyInfoInputs.cache
+C:\evidenceApp\obj\Debug\netcoreapp2.0\evidenceApp.AssemblyInfo.cs
+C:\evidenceApp\obj\Debug\netcoreapp2.0\evidenceApp.dll
+C:\evidenceApp\obj\Debug\netcoreapp2.0\evidenceApp.pdb
