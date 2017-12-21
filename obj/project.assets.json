@@ -7558,7 +7558,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "C63hSHQifqDdejm8Kf0QuyRrCtZZtRhjSTpXoSjv8bsUKwzdVyCBhYc0P+R4dVWLZAu2AX/QNSLd+3LJSfbsFA==",
+      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -12536,23 +12536,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alfa\\.nuget\\packages\\": {},
+    "C:\\Users\\jakub.rozycki\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\evidenceApp\\evidenceApp.csproj",
+      "projectUniqueName": "d:\\Priv\\sprinterBoard\\evidenceApp.csproj",
       "projectName": "evidenceApp",
-      "projectPath": "C:\\evidenceApp\\evidenceApp.csproj",
-      "packagesPath": "C:\\Users\\alfa\\.nuget\\packages\\",
-      "outputPath": "C:\\evidenceApp\\obj\\",
+      "projectPath": "d:\\Priv\\sprinterBoard\\evidenceApp.csproj",
+      "packagesPath": "C:\\Users\\jakub.rozycki\\.nuget\\packages\\",
+      "outputPath": "d:\\Priv\\sprinterBoard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\alfa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jakub.rozycki\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12576,26 +12576,26 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
-          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.0"
-          },
-          "microsoft.aspnetcore.mvc": {
-            "target": "Package",
-            "version": "2.0.0"
-          },
-          "microsoft.aspnetcore.staticfiles": {
-            "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
+          },
+          "microsoft.aspnetcore.mvc": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "microsoft.aspnetcore.staticfiles": {
+            "target": "Package",
+            "version": "[2.0.0, )"
           }
         },
         "imports": [

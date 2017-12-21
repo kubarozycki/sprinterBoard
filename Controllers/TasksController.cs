@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using evidenceApp.Models;
 using System.Linq;
 using evidenceApp.ViewModels;
+using System;
+using System.Linq.Expressions;
 
 namespace TasksApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Tasks")]
     public class TasksController : Controller
     {
         private readonly TaskContext _context;
@@ -18,26 +20,83 @@ namespace TasksApi.Controllers
            
         }
 
-        [HttpGet]
+        
+        
+        [HttpGet("[action]/{id}")]
+        public Task GetDetails(int id){
+            
+            return _context.Tasks.FirstOrDefault(x=>x.Id==id);
+        }
+
+        
+        [HttpGet("[action]")]
         public IEnumerable<TaskRow> GetAll()
         {
-            return _context.Tasks.Select(y=>y.Order).Distinct().Select(x=>new TaskRow(){
-                Order=x,
-                ToDo=_context.Tasks.FirstOrDefault(todo=>todo.Order==x&&todo.Status==TaskStatus.ToDo),
-                InProgress=_context.Tasks.FirstOrDefault(todo=>todo.Order==x&&todo.Status==TaskStatus.InProgress),
-                Done=_context.Tasks.FirstOrDefault(todo=>todo.Order==x&&todo.Status==TaskStatus.Done)
-            });;
+            
+           Queue<Task> inProg=new Queue<Task>();
+           _context.Tasks
+           .Where(x=>x.Status==TaskStatus.InProgress)
+           .OrderBy(x=>x.Order)
+           .ToList()
+           .ForEach(
+               (x)=>inProg.Enqueue(x)
+           );
+
+           Queue<Task> toDo=new Queue<Task>();          
+           _context.Tasks
+           .Where(x=>x.Status==TaskStatus.ToDo)
+           .OrderBy(x=>x.Order)
+           .ToList()
+           .ForEach(
+               (x)=>toDo.Enqueue(x)
+           );
+
+           Queue<Task> done=new Queue<Task>();          
+           _context.Tasks
+           .Where(x=>x.Status==TaskStatus.Done)
+           .OrderBy(x=>x.Order)
+           .ToList()
+           .ForEach(
+               (x)=>done.Enqueue(x)
+           );
+
+           Func<Queue<Task>,Task> queueHandler=(queue)=>{
+               return queue.Count>0?queue.Dequeue():null;
+           };
+
+           List<TaskRow> rows=new List<TaskRow>();
+           while(toDo.Count>0 || inProg.Count>0 || done.Count>0){
+               rows.Add(new TaskRow{
+                   ToDo=queueHandler.Invoke(toDo),
+                   InProgress=queueHandler.Invoke(inProg),
+                   Done=queueHandler.Invoke(done)
+               });
+           }
+           
+           return rows;
         }
+
+        
 
         [HttpPost]
         public IActionResult Add([FromBody]Task task)
         {
-            task.Order=_context.Tasks.Max(x=>x.Order)+1;
+
+            task.Order=_context.Tasks.Count()>0 ? _context.Tasks.Where(x=>x.Status==TaskStatus.ToDo).Max(x=>x.Order)+1:0;
             task.Status=TaskStatus.ToDo;
             _context.Tasks.Add(task);
             
             _context.SaveChangesAsync();
             return Ok();    
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody]Task task)
+        {
+            _context.Tasks.Update(task);
+
+            
+            return Ok(_context.SaveChangesAsync());
         }
     }
 }

@@ -21,18 +21,15 @@ namespace evidenceApp
         {
             
 
-            services.AddDbContext<TaskContext>(opt => opt.UseSqlServer("Data Source=DESKTOP-8HR6Q76\\Optima;Initial Catalog=SprinterDB;Integrated Security=True;MultipleActiveResultSets=True;"));
-            // services.AddDbContext<TaskContext>(opt => opt.UseInMemoryDatabase("Tasks"));
+            services.AddDbContext<TaskContext>(opt => opt.UseSqlServer(@"Server=localhost\SQLEXPRESS;Initial Catalog=SprinterDB;Integrated Security=True;MultipleActiveResultSets=True;"));
+            
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            // }
+            
 
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();

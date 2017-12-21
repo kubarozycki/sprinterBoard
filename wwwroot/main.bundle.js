@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\">\n            <nav class=\"navbar navbar-inverse navbar-fixed-top\">\n                    <div class=\"container\" style=\"background:darkgoldenrod;width:100%;height:100%;\">\n                        <div class=\"pull-left\">\n                \n                        <div id=\"showMenuBtn\" class=\"container\" style=\"display: inline-block;\n                        cursor: pointer;\" (click)=\"toogle()\">\n                            <div class=\"bar1\"></div>\n                            <div class=\"bar2\"></div>\n                            <div class=\"bar3\"></div>\n                        </div>\n                        </div>\n                    </div>\n                \n                </nav>\n    </div>\n    <div class=\"row\">\n            <div id=\"myNav\" class=\"overlay\">\n                    \n                    \n                    \n                        <!-- Overlay content -->\n                        <div class=\"overlay-content\">\n                            <a routerLink=\"/tasks\" (click)=\"closeNav()\">Board</a>\n                            <a routerLink=\"/taskdetails\" (click)=\"closeNav()\">Add task</a>\n                            <a href=\"#\">App settings</a>\n                            <a href=\"#\">Logout</a>\n                        </div>\n                    \n                    </div>\n                    \n                    <!-- Use any element to open/show the overlay navigation menu -->\n                    \n                    <div  style=\"margin-top:50px;\" class=\"container\">\n                            <router-outlet></router-outlet>\n                    </div>\n                    \n    </div>\n</div>\n\n\n\n\n\n\n"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n            <nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n                    <div class=\"container\" style=\"background:darkgoldenrod;width:100%;height:100%;\">\r\n                        <div class=\"pull-left\">\r\n                \r\n                        <div id=\"showMenuBtn\" class=\"container\" style=\"display: inline-block;\r\n                        cursor: pointer;\" (click)=\"toogle()\">\r\n                            <div class=\"bar1\"></div>\r\n                            <div class=\"bar2\"></div>\r\n                            <div class=\"bar3\"></div>\r\n                        </div>\r\n                        </div>\r\n                    </div>\r\n                \r\n                </nav>\r\n    </div>\r\n    <div class=\"row\">\r\n            <div id=\"myNav\" class=\"overlay\">\r\n                    \r\n                    \r\n                    \r\n                        <!-- Overlay content -->\r\n                        <div class=\"overlay-content\">\r\n                            <a routerLink=\"/tasks\" (click)=\"closeNav()\">Board</a>\r\n                            <a routerLink=\"/taskdetails\" (click)=\"closeNav()\">Add task</a>\r\n                            <a href=\"#\">App settings</a>\r\n                            <a href=\"#\">Logout</a>\r\n                        </div>\r\n                    \r\n                    </div>\r\n                    \r\n                    <!-- Use any element to open/show the overlay navigation menu -->\r\n                    \r\n                    <div  style=\"margin-top:50px;\" class=\"container\">\r\n                            <router-outlet></router-outlet>\r\n                    </div>\r\n                    \r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -122,7 +122,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: 'taskdetails', component: __WEBPACK_IMPORTED_MODULE_10__task_details_task_details_component__["a" /* TaskDetailsComponent */] },
+    { path: 'taskdetails/:id', component: __WEBPACK_IMPORTED_MODULE_10__task_details_task_details_component__["a" /* TaskDetailsComponent */] },
     { path: 'tasks', component: __WEBPACK_IMPORTED_MODULE_5__task_list_task_list_component__["a" /* TaskListComponent */] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_5__task_list_task_list_component__["a" /* TaskListComponent */] }
 ];
@@ -140,7 +140,7 @@ AppModule = __decorate([
         imports: [
             __WEBPACK_IMPORTED_MODULE_6__angular_material__["b" /* MdGridListModule */],
             __WEBPACK_IMPORTED_MODULE_6__angular_material__["a" /* MdCardModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
             ),
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2_ngx_bootstrap__["a" /* AlertModule */].forRoot(),
@@ -148,7 +148,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* JsonpModule */],
             __WEBPACK_IMPORTED_MODULE_8__angular_forms__["c" /* FormsModule */]
         ],
-        exports: [__WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["b" /* MdGridListModule */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["a" /* MdCardModule */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["b" /* MdGridListModule */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["a" /* MdCardModule */]],
         providers: [__WEBPACK_IMPORTED_MODULE_7__task_list_task_service__["a" /* TaskService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
     })
@@ -179,7 +179,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/task-details/task-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\n  <h1>Add task</h1>\n  <form>\n     <div class = \"form-group\">\n        <label for = \"name\">Name</label>\n        <input type = \"text\" class = \"form-control\" id = \"name\" required\n           [(ngModel)] = \"model.name\" name = \"name\">\n     </div>\n     \n     <div class = \"form-group\">\n        <label for = \"description\">Description</label>\n        <input type = \"text\" class = \"form-control\" id = \"description\"\n           [(ngModel)] = \"model.description\" name = \"description\">\n     </div>\n     <div class=\"form-group\">\n        <button (click)=\"save()\" type=\"button\" class=\"btn btn-primary\">\n            Save\n        </button>\n        <button (click)=\"cancel()\" type=\"button\" class=\"btn btn-primary\">\n            Cancel\n        </button>\n     </div>\n  </form>\n  \n</div>"
+module.exports = "<div class = \"container\">\r\n  <h1>Add task</h1>\r\n  <form>\r\n     <div class = \"form-group\">\r\n        <label for = \"name\">Name</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"name\" required\r\n           [(ngModel)] = \"model.name\" name = \"name\">\r\n     </div>\r\n     \r\n     <div class = \"form-group\">\r\n        <label for = \"description\">Description</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"description\"\r\n           [(ngModel)] = \"model.description\" name = \"description\">\r\n     </div>\r\n     <div class=\"form-group\">\r\n        <button (click)=\"save()\" type=\"button\" class=\"btn btn-primary\">\r\n            Save\r\n        </button>\r\n        <button (click)=\"cancel()\" type=\"button\" class=\"btn btn-primary\">\r\n            Cancel\r\n        </button>\r\n     </div>\r\n  </form>\r\n  \r\n</div>"
 
 /***/ }),
 
@@ -203,13 +203,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TaskDetailsComponent = (function () {
-    function TaskDetailsComponent(taskService, router) {
+    function TaskDetailsComponent(taskService, router, route) {
         this.taskService = taskService;
         this.router = router;
+        this.route = route;
         this.model = new Object();
+        this.model = new Object();
+        console.log("constructor");
     }
     TaskDetailsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log("ngoininit");
+        this.route.params.subscribe(function (params) {
+            _this.taskService.getTask(params["id"]).subscribe(function (response) {
+                _this.model = response;
+                console.log(_this.model);
+            }, function (err) {
+                // Log errors if any
+                console.log(err);
+            });
+        });
     };
     TaskDetailsComponent.prototype.save = function () {
         var _this = this;
@@ -235,10 +250,10 @@ TaskDetailsComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/task-details/task-details.component.html"),
         styles: [__webpack_require__("../../../../../src/app/task-details/task-details.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__task_list_task_service__["a" /* TaskService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__task_list_task_service__["a" /* TaskService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__task_list_task_service__["a" /* TaskService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__task_list_task_service__["a" /* TaskService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
 ], TaskDetailsComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=task-details.component.js.map
 
 /***/ }),
@@ -264,7 +279,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/task-list/task-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table\">\n    <colgroup>\n      <col style=\"max-width:33%;\">\n      <col style=\"max-width:33%;\">\n      <col style=\"max-width:33%;\">\n    </colgroup>\n    <thead>\n      <tr>\n        <th style=\"text-align:center;\">Do zrobienia</th>\n        <th style=\"text-align:center;\">W trakcie</th>\n        <th style=\"text-align:center;\">Zrobione</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let task of tasks\">\n        <td>\n          <div *ngIf=\"task.toDo\"  class=\"panel panel-info\" style=\"height:100%;width:100%;\">\n            <div class=\"panel-heading\">{{task.toDo.name}}</div>\n            <div class=\"panel-body\">\n                  <img class=\"img-responsive center-block\" src=\"../assets/images/Menu.ico\" style=\"width:32px;height:32px;\">\n            </div>\n            <div class=\"panel-footer\">\n              <div class=\"row\">\n                <div class=\"pull-right\">\n                  <a href=\"#\" class=\"next round\">&#8250;</a>\n                </div>\n              </div>\n            </div>\n          </div>\n        </td>\n      <td >\n        <div *ngIf=\"task.inProgress\" class=\"panel panel-warning\" style=\"height:100%;width:100%;\">\n          <div class=\"panel-heading\">{{task.inProgress.name}}</div>\n          <div class=\"panel-body\">\n              <img class=\"img-responsive center-block\" src=\"../assets/images/Menu.ico\" style=\"width:32px;height:32px;\">\n          </div>\n          <div class=\"panel-footer\">\n            <div class=\"row\">\n              <div class=\"pull-left\">\n                <a href=\"#\" class=\"next round\">&#8249;</a>\n              </div>\n              <div class=\"pull-right\" >\n                <a href=\"#\" class=\"next round\">&#8250;</a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </td>\n    <td >\n      <div *ngIf=\"task.done\" class=\"panel panel-success\" style=\"height:100%;width:100%;\">\n        <div class=\"panel-heading\">{{task.done.name}}</div>\n        <div class=\"panel-body\">\n            <img class=\"img-responsive center-block\" src=\"../assets/images/Menu.ico\" style=\"width:32px;height:32px;\">\n        </div>\n        <div class=\"panel-footer\">\n          <div class=\"row\">\n            <div class=\"pull-left\">\n              <a href=\"#\" class=\"next round\">&#8249;</a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </td>\n        \n      </tr>\n      \n    </tbody>\n  </table>"
+module.exports = "<table class=\"table\">\r\n    <colgroup>\r\n      <col style=\"width:33%;\">\r\n      <col style=\"width:33%;\">\r\n      <col style=\"width:33%;\">\r\n    </colgroup>\r\n    <thead>\r\n      <tr>\r\n        <th style=\"text-align:center;\">Do zrobienia</th>\r\n        <th style=\"text-align:center;\">W trakcie</th>\r\n        <th style=\"text-align:center;\">Zrobione</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let task of tasks\">\r\n        <td>\r\n          <div *ngIf=\"task.toDo\"  class=\"panel panel-info\" style=\"height:100%;width:100%;\">\r\n            <div class=\"panel-heading\">{{task.toDo.name}}</div>\r\n            <div class=\"panel-body\">\r\n                  <img [routerLink]=\"['/taskdetails', task.toDo.id]\" \r\n                  class=\"img-responsive center-block\" \r\n                  src=\"../assets/images/Menu.ico\" style=\"width:32px;height:32px;\">\r\n            </div>\r\n            <div class=\"panel-footer\">\r\n              <div class=\"row\">\r\n                <div class=\"pull-right\">\r\n                  <a (click)=\"moveRight(task.toDo)\" href=\"#\" class=\"next round\">&#8250;</a>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </td>\r\n      <td >\r\n        <div *ngIf=\"task.inProgress\" class=\"panel panel-warning\" style=\"height:100%;width:100%;\">\r\n          <div class=\"panel-heading\">{{task.inProgress.name}}</div>\r\n          <div class=\"panel-body\">\r\n              <img class=\"img-responsive center-block\" src=\"../assets/images/Menu.ico\" style=\"width:32px;height:32px;\">\r\n          </div>\r\n          <div class=\"panel-footer\">\r\n            <div class=\"row\">\r\n              <div class=\"pull-left\">\r\n                <a (click)=\"moveLeft(task.inProgress)\" href=\"#\" class=\"next round\">&#8249;</a>\r\n              </div>\r\n              <div class=\"pull-right\" >\r\n                <a (click)=\"moveRight(task.inProgress)\" href=\"#\" class=\"next round\">&#8250;</a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </td>\r\n    <td >\r\n      <div *ngIf=\"task.done\" class=\"panel panel-success\" style=\"height:100%;width:100%;\">\r\n        <div class=\"panel-heading\">{{task.done.name}}</div>\r\n        <div class=\"panel-body\">\r\n            <img class=\"img-responsive center-block\" src=\"../assets/images/Menu.ico\" style=\"width:32px;height:32px;\">\r\n        </div>\r\n        <div class=\"panel-footer\">\r\n          <div class=\"row\">\r\n            <div class=\"pull-left\">\r\n              <a (click)=\"moveLeft(task.done)\" href=\"#\" class=\"next round\">&#8249;</a>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n        \r\n      </tr>\r\n      \r\n    </tbody>\r\n  </table>"
 
 /***/ }),
 
@@ -291,15 +306,37 @@ var TaskListComponent = (function () {
         this.taskService = taskService;
     }
     TaskListComponent.prototype.ngOnInit = function () {
+        this.getTasksList();
+    };
+    TaskListComponent.prototype.getTasksList = function () {
         var _this = this;
         this.taskService.getTasks()
-            .subscribe(function (task) {
-            _this.tasks = task;
-            console.log(_this.tasks);
+            .subscribe(function (tasks) {
+            _this.tasks = tasks;
         }, //Bind to view
         function (//Bind to view
             err) {
             // Log errors if any
+            console.log(err);
+        });
+    };
+    TaskListComponent.prototype.moveRight = function (task) {
+        var _this = this;
+        console.log(task);
+        task.status++;
+        this.taskService.updateTask(task).subscribe(function (task) {
+            _this.getTasksList();
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    TaskListComponent.prototype.moveLeft = function (task) {
+        var _this = this;
+        console.log(task);
+        task.status--;
+        this.taskService.updateTask(task).subscribe(function (task) {
+            _this.getTasksList();
+        }, function (err) {
             console.log(err);
         });
     };
@@ -328,6 +365,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -340,21 +378,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TaskService = (function () {
     function TaskService(http) {
         this.http = http;
-        this.tasksUrl = 'http://localhost:5000/api/tasks';
+        this.tasksUrl = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].url + 'tasks';
     }
     TaskService.prototype.getTasks = function () {
         // ...using get request
-        return this.http.get(this.tasksUrl)
+        return this.http.get(this.tasksUrl + "/GetAll/")
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
+    };
+    TaskService.prototype.getTask = function (id) {
+        return this.http.get(this.tasksUrl + "/GetDetails/" + id)
+            .map(function (res) { return res.json(); })
+            .catch(function (err) {
+            return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].throw(err); // observable needs to be returned or exception raised
+        });
     };
     TaskService.prototype.addTask = function (task) {
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* RequestOptions */]({ headers: headers });
         return this.http.post(this.tasksUrl, task, options)
+            .map(function (response) { return response; })
+            .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
+    };
+    TaskService.prototype.updateTask = function (task) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* RequestOptions */]({ headers: headers });
+        return this.http.put(this.tasksUrl, task, options)
             .map(function (response) { return response; })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
     };
@@ -381,7 +434,8 @@ var _a;
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 // The file contents for the current environment will overwrite these during build.
 var environment = {
-    production: false
+    production: false,
+    url: 'http://localhost:5000/api/'
 };
 //# sourceMappingURL=environment.js.map
 

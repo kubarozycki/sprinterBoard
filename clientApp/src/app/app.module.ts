@@ -7,7 +7,6 @@ import {TaskListComponent} from './task-list/task-list.component';
 import {MdGridListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {TaskService} from './task-list/task.service';
-
 import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { TaskDetailsComponent } from './task-details/task-details.component';
@@ -15,7 +14,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 
 
 const appRoutes: Routes = [
-  {path:'taskdetails',component:TaskDetailsComponent},
+  {path:'taskdetails/:id',component:TaskDetailsComponent},
   {path:'tasks',component:TaskListComponent},
   {path:'', component:TaskListComponent}
   

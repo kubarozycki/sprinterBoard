@@ -11,14 +11,45 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService:TaskService) { }
   tasks:any[];
   ngOnInit() {
+    this.getTasksList();
+  }
+
+  getTasksList(){
     this.taskService.getTasks()
     .subscribe(
-        task => {this.tasks = task;
-        console.log(this.tasks);}, //Bind to view
+        tasks => {
+          this.tasks = tasks;
+        }, //Bind to view
          err => {
              // Log errors if any
              console.log(err);
          });
+  }
+
+  moveRight(task:any){
+    console.log(task);
+    task.status++;
+    this.taskService.updateTask(task).subscribe(
+        task=>{
+          this.getTasksList();
+        },
+        err=>{
+          console.log(err);
+        }
+    );
+  }
+
+  moveLeft(task:any){
+    console.log(task);
+    task.status--;
+    this.taskService.updateTask(task).subscribe(
+      task=>{
+        this.getTasksList();
+      },
+      err=>{
+        console.log(err);
+      }
+  );
   }
 
 }
