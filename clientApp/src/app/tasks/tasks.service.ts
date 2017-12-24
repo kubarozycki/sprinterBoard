@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import { Request } from '@angular/http/src/static_request';
 import { error } from 'util';
 @Injectable()
-export class TaskService {
+export class TasksService {
     constructor(private http:Http){}
     private tasksUrl=environment.url+'tasks'
    

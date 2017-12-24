@@ -15,9 +15,13 @@ namespace evidenceApp.Models
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Task>();
+        
         }
 
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<User> Users{get;set;}
+        public DbSet<AppUser> AppUsers{get;set;}
+        
 
     }
 }

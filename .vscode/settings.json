@@ -9,7 +9,7 @@
                                  // the explore tree
         "**/bin":true,
         "**/obj":true,
-        "**/dist":true,
+        "**/dist":false,
         // alternative version
         "node_modules": true    // this excludes the folder 
                                 // only from the root of
