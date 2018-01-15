@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TasksService} from '../tasks.service'
+import { TasksService } from '../tasks.service'
 
 @Component({
   selector: 'app-task-list',
@@ -8,48 +8,47 @@ import {TasksService} from '../tasks.service'
 })
 export class TaskListComponent implements OnInit {
 
-  constructor(private taskService:TasksService) { }
-  tasks:any[];
+  constructor(private taskService: TasksService) { }
+  tasks: any[];
   ngOnInit() {
     this.getTasksList();
   }
 
-  getTasksList(){
+  getTasksList() {
     this.taskService.getTasks()
-    .subscribe(
-        tasks => {
-          this.tasks = tasks;
-        }, //Bind to view
-         err => {
-             // Log errors if any
-             console.log(err);
-         });
+      .subscribe(
+      tasks => {
+        this.tasks = tasks;
+      },
+      err => {
+        console.log(err);
+      });
   }
 
-  moveRight(task:any){
+  moveRight(task: any) {
     console.log(task);
     task.status++;
     this.taskService.updateTask(task).subscribe(
-        task=>{
-          this.getTasksList();
-        },
-        err=>{
-          console.log(err);
-        }
+      task => {
+        this.getTasksList();
+      },
+      err => {
+        console.log(err);
+      }
     );
   }
 
-  moveLeft(task:any){
+  moveLeft(task: any) {
     console.log(task);
     task.status--;
     this.taskService.updateTask(task).subscribe(
-      task=>{
+      task => {
         this.getTasksList();
       },
-      err=>{
+      err => {
         console.log(err);
       }
-  );
+    );
   }
 
 }

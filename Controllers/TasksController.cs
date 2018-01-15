@@ -5,9 +5,13 @@ using System.Linq;
 using evidenceApp.ViewModels;
 using System;
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace TasksApi.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
     [Route("api/Tasks")]
     public class TasksController : Controller
     {
@@ -16,8 +20,6 @@ namespace TasksApi.Controllers
         public TasksController(TaskContext context)
         {
             _context = context;
-
-           
         }
 
         
@@ -28,7 +30,6 @@ namespace TasksApi.Controllers
             return _context.Tasks.FirstOrDefault(x=>x.Id==id);
         }
 
-        
         [HttpGet("[action]")]
         public IEnumerable<TaskRow> GetAll()
         {

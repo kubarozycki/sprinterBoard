@@ -19,7 +19,7 @@ namespace evidenceApp.Models
         }
 
         public DbSet<Task> Tasks { get; set; }
-        public DbSet<User> Users{get;set;}
+        // public DbSet<User> Users{get;set;}
         public DbSet<AppUser> AppUsers{get;set;}
         
 

@@ -2,38 +2,41 @@
 using System.Threading.Tasks;
 using evidenceApp.Models;
 using evidenceApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using TasksApi.ViewModels;
 
 namespace TasksApi.Controllers
 {
-    [Route("api/Tasks")]
+    [Authorize]
+    [Route("api/Account")]
     public class UserController : Controller
     {
         private readonly TaskContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public UserController(TaskContext context)
+        public UserController(TaskContext context,UserManager<AppUser> userManager)
         {
-            _context = context;
-
-
+            this._context = context;
+            this._userManager=userManager;
         }
 
+        [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
+        public async Task<IActionResult> Post([FromBody]CredentialsViewModel model)
         {
-            // if (!ModelState.IsValid)
-            // {
-            //     return BadRequest(ModelState);
-            // }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            // var userIdentity = _mapper.Map<AppUser>(model);
-            // var result = await _userManager.CreateAsync(userIdentity, model.Password);
+            var identity=new AppUser(){
+                UserName=model.UserName
+                
+            };
 
-            // if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
-
-            // await _appDbContext.JobSeekers.AddAsync(new JobSeeker { IdentityId = userIdentity.Id, Location = model.Location });
-            // await _appDbContext.SaveChangesAsync();
-
+            var result= await _userManager.CreateAsync(identity,model.Password);
             return new OkResult();
         }
     }

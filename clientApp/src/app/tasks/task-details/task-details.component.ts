@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TasksService} from '../tasks.service';
 import {Router,ActivatedRoute } from '@angular/router';
-// import { ActivatedRoute } from '@angular/router';
+import { User } from '../../model/user';
+
 
 
 @Component({
@@ -10,7 +11,8 @@ import {Router,ActivatedRoute } from '@angular/router';
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit {
-  model = new Object();
+  model:any;
+  
   constructor(private taskService:TasksService,private router:Router,private route:ActivatedRoute) { 
     this.model=new Object();
     console.log("constructor")
@@ -25,7 +27,6 @@ export class TaskDetailsComponent implements OnInit {
         console.log(this.model);
       }, 
        err => {
-           // Log errors if any
            console.log(err);
        });
    });

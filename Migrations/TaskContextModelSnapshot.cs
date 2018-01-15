@@ -79,29 +79,6 @@ namespace evidenceApp.Migrations
 
                     b.ToTable("Tasks");
                 });
-
-            modelBuilder.Entity("User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("IdentityId");
-
-                    b.Property<string>("Location");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdentityId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("User", b =>
-                {
-                    b.HasOne("evidenceApp.Models.AppUser", "Identity")
-                        .WithMany()
-                        .HasForeignKey("IdentityId");
-                });
 #pragma warning restore 612, 618
         }
     }
