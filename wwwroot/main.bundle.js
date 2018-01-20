@@ -154,7 +154,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var LoginComponent = (function () {
-    //loginForm: NgForm;
     function LoginComponent(authService, router) {
         this.authService = authService;
         this.router = router;
@@ -494,11 +493,13 @@ var AuthGuard = (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
-        console.log("can activate check");
         return this.checkLogin(state.url);
     };
     AuthGuard.prototype.checkLogin = function (url) {
         if (this.authService.loggedIn) {
+            return true;
+        }
+        else if (localStorage.getItem('auth_token')) {
             return true;
         }
         this.authService.RedirectUrl = url;
@@ -594,6 +595,27 @@ var Credentials = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/model/task.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Task; });
+var Task = (function () {
+    function Task(id, name, description) {
+        if (id === void 0) { id = null; }
+        if (name === void 0) { name = ""; }
+        if (description === void 0) { description = ""; }
+        this.Id = id;
+        this.Name = name;
+        this.Description = description;
+    }
+    return Task;
+}());
+
+//# sourceMappingURL=task.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/model/user.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -634,7 +656,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/tasks/task-details/task-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\r\n  <h1>Add task</h1>\r\n  <form>\r\n     <div class = \"form-group\">\r\n        <label for = \"name\">Name</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"name\" required\r\n           [(ngModel)] = \"model.name\" name = \"name\">\r\n     </div>\r\n     \r\n     <div class = \"form-group\">\r\n        <label for = \"description\">Description</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"description\"\r\n           [(ngModel)] = \"model.description\" name = \"description\">\r\n     </div>\r\n     <div class=\"form-group\">\r\n        <button (click)=\"save()\" type=\"button\" class=\"btn btn-primary\">\r\n            Save\r\n        </button>\r\n        <button (click)=\"cancel()\" type=\"button\" class=\"btn btn-primary\" [routerLink]=\"['/tasks/']\" >\r\n            Cancel\r\n        </button>\r\n     </div>\r\n  </form>\r\n  \r\n</div>\r\n"
+module.exports = "<div class = \"container\">\r\n  <h1>Add task</h1>\r\n  <form #detailsForm=\"ngForm\" (submit)=\"save()\" >\r\n     <div class = \"form-group\">\r\n        <label for = \"name\">Name</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"name\" required\r\n           [(ngModel)] = \"model.Name\" name = \"name\">\r\n     </div>\r\n     \r\n     <div class = \"form-group\">\r\n        <label for = \"description\">Description</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"description\"\r\n           [(ngModel)] = \"model.Description\" name = \"description\">\r\n     </div>\r\n     <div class=\"form-group\">\r\n        <button  type=\"submit\" class=\"btn btn-primary\">\r\n            Save\r\n        </button>\r\n        <button (click)=\"cancel()\" type=\"button\" class=\"btn btn-primary\" [routerLink]=\"['/tasks/']\" >\r\n            Cancel\r\n        </button>\r\n     </div>\r\n  </form>\r\n  \r\n</div>\r\n"
 
 /***/ }),
 
@@ -646,6 +668,7 @@ module.exports = "<div class = \"container\">\r\n  <h1>Add task</h1>\r\n  <form>
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tasks_service__ = __webpack_require__("../../../../../src/app/tasks/tasks.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_task__ = __webpack_require__("../../../../../src/app/model/task.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -658,12 +681,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TaskDetailsComponent = (function () {
     function TaskDetailsComponent(taskService, router, route) {
         this.taskService = taskService;
         this.router = router;
         this.route = route;
-        this.model = new Object();
+        this.model = new __WEBPACK_IMPORTED_MODULE_3__model_task__["a" /* Task */]();
         console.log("constructor");
     }
     TaskDetailsComponent.prototype.ngOnInit = function () {
@@ -671,7 +695,7 @@ var TaskDetailsComponent = (function () {
         console.log("ngoininit");
         this.route.params.subscribe(function (params) {
             _this.taskService.getTask(params["id"]).subscribe(function (response) {
-                _this.model = response;
+                _this.model = new __WEBPACK_IMPORTED_MODULE_3__model_task__["a" /* Task */](response["id"], response["name"], response["description"]);
                 console.log(_this.model);
             }, function (err) {
                 console.log(err);
@@ -680,7 +704,7 @@ var TaskDetailsComponent = (function () {
     };
     TaskDetailsComponent.prototype.save = function () {
         var _this = this;
-        if (this.model.hasOwnProperty('id') === false) {
+        if (this.model.Id == null) {
             this.taskService.addTask(this.model).subscribe(function (response) {
                 _this.router.navigateByUrl('/tasks');
             }, function (err) {
@@ -895,14 +919,21 @@ var TasksService = (function () {
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
     };
     TasksService.prototype.getTask = function (id) {
-        return this.http.get(this.tasksUrl + "/GetDetails/" + id)
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
+        headers.append('Content-Type', 'application/json');
+        var authToken = localStorage.getItem('auth_token');
+        headers.append('Authorization', "Bearer " + authToken);
+        return this.http.get(this.tasksUrl + "/GetDetails/" + id, { headers: headers })
             .map(function (res) { return res.json(); })
             .catch(function (err) {
             return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].throw(err);
         });
     };
     TasksService.prototype.addTask = function (task) {
+        delete task.Id;
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var authToken = localStorage.getItem('auth_token');
+        headers.append('Authorization', "Bearer " + authToken);
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* RequestOptions */]({ headers: headers });
         return this.http.post(this.tasksUrl, task, options)
             .map(function (response) { return response; })
@@ -910,6 +941,8 @@ var TasksService = (function () {
     };
     TasksService.prototype.updateTask = function (task) {
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var authToken = localStorage.getItem('auth_token');
+        headers.append('Authorization', "Bearer " + authToken);
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* RequestOptions */]({ headers: headers });
         return this.http.put(this.tasksUrl, task, options)
             .map(function (response) { return response; })

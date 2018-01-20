@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TasksService} from '../tasks.service';
 import {Router,ActivatedRoute } from '@angular/router';
-import { User } from '../../model/user';
-
+import { Task } from '../../model/task';
 
 
 @Component({
@@ -11,10 +10,10 @@ import { User } from '../../model/user';
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit {
-  model:any;
+  model: Task;
   
   constructor(private taskService:TasksService,private router:Router,private route:ActivatedRoute) { 
-    this.model=new Object();
+    this.model = new Task();
     console.log("constructor")
   }
 
@@ -23,7 +22,7 @@ export class TaskDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.taskService.getTask(params["id"]).subscribe(
       (response) => {
-        this.model=response;
+        this.model = new Task(response["id"], response["name"],response["description"]);
         console.log(this.model);
       }, 
        err => {
@@ -36,7 +35,7 @@ export class TaskDetailsComponent implements OnInit {
 
   save():void{
     
-    if(this.model.hasOwnProperty('id')===false)
+    if(this.model.Id==null)
     {
       this.taskService.addTask(this.model).subscribe(
         (response) => { 

@@ -1,24 +1,24 @@
 <div class = "container">
   <h1>Add task</h1>
-  <form>
+  <form #detailsForm="ngForm" (submit)="save()" >
      <div class = "form-group">
         <label for = "name">Name</label>
         <input type = "text" class = "form-control" id = "name" required
-           [(ngModel)] = "model.name" name = "name">
+           [(ngModel)] = "model.Name" name = "name">
      </div>
      
      <div class = "form-group">
         <label for = "description">Description</label>
         <input type = "text" class = "form-control" id = "description"
-           [(ngModel)] = "model.description" name = "description">
+           [(ngModel)] = "model.Description" name = "description">
      </div>
      <div class="form-group">
-        <button (click)="save()" type="button" class="btn btn-primary">
+        <button  type="submit" class="btn btn-primary">
             Save
         </button>
-        <button (click)="cancel()" type="button" class="btn btn-primary" [routerLink]="['/tasks/']" >
+        <a (click)="cancel()"  class="btn btn-primary" [routerLink]="['/tasks/']" >
             Cancel
-        </button>
+        </a>
      </div>
   </form>
   

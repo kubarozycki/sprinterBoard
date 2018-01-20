@@ -17,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using sprinterBoard.JWT;
 using evidenceApp.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace evidenceApp
 {
@@ -27,8 +28,6 @@ namespace evidenceApp
             this.Configuration = configuration;
         }
         
-        private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // todo: get this from somewhere secure
-        private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
         public IConfiguration Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
@@ -45,13 +44,12 @@ namespace evidenceApp
                     o.Password.RequiredLength = 6;
                 })
             .AddEntityFrameworkStores<TaskContext>();
-            //.AddDefaultTokenProviders();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    //options.Audience = Configuration["Audience"];
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
+                        
                         ValidAudience = Configuration["JwtIssuerOptions:Audience"],
                         ValidIssuer= Configuration["JwtIssuerOptions:Issuer"],
                         ValidateIssuerSigningKey=true,
@@ -70,8 +68,11 @@ namespace evidenceApp
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("index.html");
-
-
+            
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.Use(async (context, next) =>
             {

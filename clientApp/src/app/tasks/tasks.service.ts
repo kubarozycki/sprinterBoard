@@ -22,7 +22,11 @@ export class TasksService {
   }
   getTask(id): Observable<any[]> {
 
-    return this.http.get(this.tasksUrl + "/GetDetails/" + id)
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Authorization', `Bearer ${authToken}`);
+    return this.http.get(this.tasksUrl + "/GetDetails/" + id, { headers })
       .map((res: Response) => res.json())
       .catch(err => {
         return Observable.throw(err);
@@ -32,7 +36,10 @@ export class TasksService {
 
 
   addTask(task: any): Observable<any> {
+    delete task.Id;
     let headers = new Headers({ 'Content-Type': 'application/json' });
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Authorization', `Bearer ${authToken}`);
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.tasksUrl, task, options)
       .map((response: Response) => { return response; })
@@ -40,6 +47,8 @@ export class TasksService {
   }
   updateTask(task: any): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Authorization', `Bearer ${authToken}`);
     let options = new RequestOptions({ headers: headers });
     return this.http.put(this.tasksUrl, task, options)
       .map((response: Response) => { return response; })

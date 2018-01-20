@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="clientApp\src\app\model\credentials.ts" />
+    <None Remove="clientApp\src\app\model\task.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
@@ -22,8 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="clientApp\src\app\model\credentials.ts" />
+    <TypeScriptCompile Include="clientApp\src\app\model\task.ts" />
   </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="cd $(SolutionDir)clientApp\ &#xD;&#xA;ng build --verbose" />
-  </Target>
 </Project>

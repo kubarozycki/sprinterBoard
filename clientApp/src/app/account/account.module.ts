@@ -7,6 +7,7 @@ import {AccountService} from './account.service';
 import { LoginComponent } from './login/login.component';
 @NgModule({
   imports: [
+    RouterModule,
     CommonModule,
     FormsModule
   ],

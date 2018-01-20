@@ -10,7 +10,6 @@ import { Credentials } from '../../model/credentials';
 })
 export class LoginComponent implements OnInit {
   credentials: Credentials;
-  //loginForm: NgForm;
   constructor
   (
     private authService: AuthService,
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
   )
   {
     this.credentials = new Credentials();
-    
   }
 
   ngOnInit() {

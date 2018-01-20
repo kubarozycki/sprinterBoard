@@ -62,7 +62,7 @@ namespace sprinterBoard.Controllers
                 {
                     if (await _userManager.CheckPasswordAsync(userToVerify, password))
                     {
-                        return await System.Threading.Tasks.Task.FromResult(GenerateToken(userName));
+                        return await System.Threading.Tasks.Task.FromResult(GenerateToken(userToVerify.Id));
                     }
                 }
             }
@@ -70,11 +70,11 @@ namespace sprinterBoard.Controllers
             return await System.Threading.Tasks.Task.FromResult<JwtSecurityToken>(null);
         }
 
-        private JwtSecurityToken GenerateToken(string userName)
+        private JwtSecurityToken GenerateToken(string userID)
         {
             var claims = new[]
                         {
-                            new Claim(JwtRegisteredClaimNames.Sub,userName),
+                            new Claim(JwtRegisteredClaimNames.Sub,userID),
                             new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
 
                         };
