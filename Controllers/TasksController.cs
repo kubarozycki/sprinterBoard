@@ -86,14 +86,17 @@ namespace TasksApi.Controllers
         public IActionResult Add([FromBody]Task task)
         {
             var user = _context.AppUsers.FirstOrDefault(x=>x.Id==_userManager.GetUserId(User));
-            task.Order=_context.Tasks.Count()>0 ? _context.Tasks
-                .Where(x=>x.Status==TaskStatus.ToDo)
-                .OrderByDescending(x=>x.Order)
-                .FirstOrDefault().Order+ 1 : 0;
-
-            task.Status=TaskStatus.ToDo;
-            task.User = user;
-            _context.Tasks.Add(task);   
+            var toAdd = new Task()
+            {
+                Status = TaskStatus.ToDo,
+                User = user,
+                Order = _context.Tasks.Count() > 0 ? _context.Tasks
+                .Where(x => x.Status == TaskStatus.ToDo)
+                .OrderByDescending(x => x.Order)
+                .FirstOrDefault().Order + 1 : 0
+            };
+           
+            _context.Tasks.Add(toAdd);   
             
             _context.SaveChangesAsync();
             return Ok();    
@@ -104,7 +107,7 @@ namespace TasksApi.Controllers
         {
             var toUpdate = _context.Tasks.FirstOrDefault(x => x.Id == task.Id);
             toUpdate.Name = task.Name;
-            toUpdate.Order = task.Order;
+            toUpdate.Status = task.Status;
             toUpdate.Description = task.Description;
             return Ok(_context.SaveChangesAsync());
         }
