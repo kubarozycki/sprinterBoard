@@ -102,9 +102,10 @@ namespace TasksApi.Controllers
         [HttpPut]
         public IActionResult Update([FromBody]Task task)
         {
-            _context.Tasks.Update(task);
-
-            
+            var toUpdate = _context.Tasks.FirstOrDefault(x => x.Id == task.Id);
+            toUpdate.Name = task.Name;
+            toUpdate.Order = task.Order;
+            toUpdate.Description = task.Description;
             return Ok(_context.SaveChangesAsync());
         }
     }

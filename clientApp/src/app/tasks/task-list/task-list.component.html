@@ -24,7 +24,7 @@
             <div class="panel-footer">
               <div class="row">
                 <div class="pull-right">
-                  <a (click)="moveRight(task.toDo)" href="#" class="next round">&#8250;</a>
+                  <a (click)="moveRight(task.toDo)"  class="next round">&#8250;</a>
                 </div>
               </div>
             </div>
@@ -40,33 +40,34 @@
           <div class="panel-footer">
             <div class="row">
               <div class="pull-left">
-                <a (click)="moveLeft(task.inProgress)" href="#" class="next round">&#8249;</a>
+                <a (click)="moveLeft(task.inProgress)"  class="next round">&#8249;</a>
               </div>
               <div class="pull-right" >
-                <a (click)="moveRight(task.inProgress)" href="#" class="next round">&#8250;</a>
+                <a (click)="moveRight(task.inProgress)"  class="next round">&#8250;</a>
               </div>
             </div>
           </div>
         </div>
       </td>
-    <td >
-      <div *ngIf="task.done" class="panel panel-success" style="height:100%;width:100%;">
-        <div class="panel-heading">{{task.done.name}}</div>
-        <div class="panel-body">
+      <td>
+        <!--TODO wywalic te hrefy!!!-->
+        <div *ngIf="task.done" class="panel panel-success" style="height:100%;width:100%;">
+          <div class="panel-heading">{{task.done.name}}</div>
+          <div class="panel-body">
             <img [routerLink]="['/tasks/taskdetails', task.done.id]"
-            class="img-responsive center-block"
-            src="../assets/images/Menu.ico"
-            style="width:32px;height:32px;">
-        </div>
-        <div class="panel-footer">
-          <div class="row">
-            <div class="pull-left">
-              <a (click)="moveLeft(task.done)" href="#" class="next round">&#8249;</a>
+                 class="img-responsive center-block"
+                 src="../assets/images/Menu.ico"
+                 style="width:32px;height:32px;">
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="pull-left">
+                <a (click)="moveLeft(task.done)" class="next round">&#8249;</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </td>
+      </td>
         
       </tr>
       

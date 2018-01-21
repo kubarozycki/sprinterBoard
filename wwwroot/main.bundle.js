@@ -21,15 +21,17 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__registration_registration_component__ = __webpack_require__("../../../../../src/app/account/registration/registration.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__account_service__ = __webpack_require__("../../../../../src/app/account/account.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login_component__ = __webpack_require__("../../../../../src/app/account/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__account_service__ = __webpack_require__("../../../../../src/app/account/account.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__login_login_component__ = __webpack_require__("../../../../../src/app/account/login/login.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -44,11 +46,12 @@ var AccountModule = (function () {
 AccountModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         imports: [
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* RouterModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* FormsModule */]
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["c" /* FormsModule */]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_2__registration_registration_component__["a" /* RegistrationComponent */], __WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */]],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__account_service__["a" /* AccountService */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_2__registration_registration_component__["a" /* RegistrationComponent */], __WEBPACK_IMPORTED_MODULE_6__login_login_component__["a" /* LoginComponent */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_5__account_service__["a" /* AccountService */]]
     })
 ], AccountModule);
 
@@ -127,7 +130,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/account/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n\r\n    <div class=\"card\">\r\n      <div class=\"card-block\">\r\n        <h4>Login</h4>\r\n\r\n        <form #loginForm=\"ngForm\" (ngSubmit)=\"login(loginForm)\">\r\n\r\n          <div class=\"form-group\">\r\n            <label for=\"email\">Email</label>\r\n            <input id=\"email\" type=\"email\" required name=\"email\" [ngModel]=\"credentials.email\" class=\"form-control\"\r\n                   placeholder=\"Email\">\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <label for=\"password\">Password</label>\r\n            <input id=\"password\" name=\"password\" type=\"password\" required class=\"form-control\" placeholder=\"Password\" [ngModel]=\"credentials.password\">\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <button type=\"submit\" class=\"btn btn-primary\">Login</button>\r\n          </div>\r\n        </form>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n\r\n    <div class=\"card\">\r\n      <div class=\"card-block\">\r\n        <h4>Login</h4>\r\n\r\n        <form #loginForm=\"ngForm\" (ngSubmit)=\"login(loginForm)\">\r\n\r\n          <div class=\"form-group\">\r\n            <label for=\"email\">Email</label>\r\n            <input id=\"email\" type=\"email\" required name=\"email\" [ngModel]=\"credentials.email\" class=\"form-control\"\r\n                   placeholder=\"Email\">\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <label for=\"password\">Password</label>\r\n            <input id=\"password\" name=\"password\" type=\"password\" required class=\"form-control\" placeholder=\"Password\" [ngModel]=\"credentials.password\">\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <button type=\"submit\" class=\"btn btn-primary\">Login</button>\r\n            <button routerLink=\"/account/registration\" class=\"btn btn-primary\">Register</button>\r\n          </div>\r\n        </form>\r\n        \r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -656,7 +659,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/tasks/task-details/task-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\r\n  <h1>Add task</h1>\r\n  <form #detailsForm=\"ngForm\" (submit)=\"save()\" >\r\n     <div class = \"form-group\">\r\n        <label for = \"name\">Name</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"name\" required\r\n           [(ngModel)] = \"model.Name\" name = \"name\">\r\n     </div>\r\n     \r\n     <div class = \"form-group\">\r\n        <label for = \"description\">Description</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"description\"\r\n           [(ngModel)] = \"model.Description\" name = \"description\">\r\n     </div>\r\n     <div class=\"form-group\">\r\n        <button  type=\"submit\" class=\"btn btn-primary\">\r\n            Save\r\n        </button>\r\n        <button (click)=\"cancel()\" type=\"button\" class=\"btn btn-primary\" [routerLink]=\"['/tasks/']\" >\r\n            Cancel\r\n        </button>\r\n     </div>\r\n  </form>\r\n  \r\n</div>\r\n"
+module.exports = "<div class = \"container\">\r\n  <h1>Add task</h1>\r\n  <form #detailsForm=\"ngForm\" (submit)=\"save()\" >\r\n     <div class = \"form-group\">\r\n        <label for = \"name\">Name</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"name\" required\r\n           [(ngModel)] = \"model.Name\" name = \"name\">\r\n     </div>\r\n     \r\n     <div class = \"form-group\">\r\n        <label for = \"description\">Description</label>\r\n        <input type = \"text\" class = \"form-control\" id = \"description\"\r\n           [(ngModel)] = \"model.Description\" name = \"description\">\r\n     </div>\r\n     <div class=\"form-group\">\r\n        <button  type=\"submit\" class=\"btn btn-primary\">\r\n            Save\r\n        </button>\r\n        <a (click)=\"cancel()\"  class=\"btn btn-primary\" [routerLink]=\"['/tasks/']\" >\r\n            Cancel\r\n        </a>\r\n     </div>\r\n  </form>\r\n  \r\n</div>\r\n"
 
 /***/ }),
 
