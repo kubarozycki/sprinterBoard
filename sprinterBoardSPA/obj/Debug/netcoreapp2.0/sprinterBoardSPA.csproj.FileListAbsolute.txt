@@ -1,0 +1,15 @@
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardSPA.deps.json
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardSPA.runtimeconfig.json
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardSPA.runtimeconfig.dev.json
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardSPA.dll
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardSPA.pdb
+D:\Priv\sprinterBoard\sprinterBoardSPA\obj\Debug\netcoreapp2.0\sprinterBoardSPA.csprojResolveAssemblyReference.cache
+D:\Priv\sprinterBoard\sprinterBoardSPA\obj\Debug\netcoreapp2.0\sprinterBoardSPA.csproj.CoreCompileInputs.cache
+D:\Priv\sprinterBoard\sprinterBoardSPA\obj\Debug\netcoreapp2.0\sprinterBoardSPA.AssemblyInfoInputs.cache
+D:\Priv\sprinterBoard\sprinterBoardSPA\obj\Debug\netcoreapp2.0\sprinterBoardSPA.AssemblyInfo.cs
+D:\Priv\sprinterBoard\sprinterBoardSPA\obj\Debug\netcoreapp2.0\sprinterBoardSPA.dll
+D:\Priv\sprinterBoard\sprinterBoardSPA\obj\Debug\netcoreapp2.0\sprinterBoardSPA.pdb
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardDAL.dll
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardDTO.dll
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardDTO.pdb
+D:\Priv\sprinterBoard\sprinterBoardSPA\bin\Debug\netcoreapp2.0\sprinterBoardDAL.pdb
