@@ -63,29 +63,24 @@ namespace spriterBoardSPA
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            DefaultFilesOptions options = new DefaultFilesOptions();
-            options.DefaultFileNames.Clear();
-            options.DefaultFileNames.Add("index.html");
-
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
-
-            app.Use(async (context, next) =>
-            {
-                await next();
-                if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
-                {
-                    context.Request.Path = "/index.html";
-                    await next();
-                }
             })
+            .UseStaticFiles()
             .UseAuthentication()
             .UseCors("AllowAll")
-            .UseMvc()
-            .UseDefaultFiles(options)
-            .UseStaticFiles();
+            .UseMvc(routes =>
+            {
+                routes.MapRoute(
+                name: "API",
+                template: "api/{controller}/{action}/{id?}"
+                );
+                routes.MapSpaFallbackRoute(
+                    name:"spa-fallback",
+                    defaults:"index.html"
+                    );
+            });
 
 
         }
