@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {AccountService} from '../account.service';
-import {User} from '../../model/user';
+import { User } from '../../model/user';
 @Component({
   moduleId:module.id,
   selector: 'app-registration',
@@ -11,7 +11,7 @@ import {User} from '../../model/user';
 export class RegistrationComponent implements OnInit {
 
   private user:User;
-  constructor(private accountService:AccountService) {
+  constructor(private accountService:AccountService,private router:Router) {
     this.user=new User();
    }
 
@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
     console.log(this.user);
     this.accountService.register(this.user).subscribe(
       response => {
-        console.log("registered");
+        this.router.navigate(['/account/login']);
       },
       error => {
         console.log(error);

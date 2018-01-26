@@ -11,7 +11,7 @@ namespace sprinterBoardDTO.ViewModels
         public string Name { get; set; }
         public string Description { get; set; }
         public TaskStatus Status { get; set; }
-        public UserViewModel User { get; set; }
+        public string UserId { get; set; }
         public int Order { get; set; }
     }
 }

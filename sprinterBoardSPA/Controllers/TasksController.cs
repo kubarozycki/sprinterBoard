@@ -46,6 +46,7 @@ namespace TasksApi.Controllers
         public async Task<IActionResult> Add([FromBody]TaskViewModel task)
         {
             var user = _context.AppUsers.FirstOrDefault(x=>x.Id==_userManager.GetUserId(User));
+            task.UserId = user.Id;
             var taskId= await _taskService.AddAsync(task);
             return Ok(taskId);
         }

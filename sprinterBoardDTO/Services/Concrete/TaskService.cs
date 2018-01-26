@@ -50,7 +50,7 @@ namespace sprinterBoardDTO.Services.Concrete
             Task taskDAL = mapTaskViewModelToTask(task);
             taskDAL.User = 
                 DatabaseContext.AppUsers.
-                FirstOrDefault(x=>x.Id==task.User.Id);
+                FirstOrDefault(x=>x.Id==task.UserId);
 
             await DatabaseContext.Tasks.AddAsync(
                taskDAL
@@ -81,7 +81,7 @@ namespace sprinterBoardDTO.Services.Concrete
                 Name = model.Name,
                 Description = model.Description,
                 Status = model.Status,
-                User = mapAppUserToUserViewModel.Invoke(model.User),
+                UserId = model.User.Id,
                 Order = model.Order
             };
         };
