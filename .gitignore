@@ -1,1 +1,5 @@
 .vs/
+sprinterBoardSPA/clientApp/src/environments/environment.ts
+sprinterBoardSPA/appsettings.json
+sprinterBoardSPA/obj/
+sprinterBoardSPA/bin/

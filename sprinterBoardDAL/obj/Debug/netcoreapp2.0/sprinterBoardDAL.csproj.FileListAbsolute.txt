@@ -1,9 +1,0 @@
-D:\Priv\sprinterBoard\sprinterBoardDAL\bin\Debug\netcoreapp2.0\sprinterBoardDAL.deps.json
-D:\Priv\sprinterBoard\sprinterBoardDAL\bin\Debug\netcoreapp2.0\sprinterBoardDAL.dll
-D:\Priv\sprinterBoard\sprinterBoardDAL\bin\Debug\netcoreapp2.0\sprinterBoardDAL.pdb
-D:\Priv\sprinterBoard\sprinterBoardDAL\obj\Debug\netcoreapp2.0\sprinterBoardDAL.csproj.CoreCompileInputs.cache
-D:\Priv\sprinterBoard\sprinterBoardDAL\obj\Debug\netcoreapp2.0\sprinterBoardDAL.AssemblyInfoInputs.cache
-D:\Priv\sprinterBoard\sprinterBoardDAL\obj\Debug\netcoreapp2.0\sprinterBoardDAL.AssemblyInfo.cs
-D:\Priv\sprinterBoard\sprinterBoardDAL\obj\Debug\netcoreapp2.0\sprinterBoardDAL.dll
-D:\Priv\sprinterBoard\sprinterBoardDAL\obj\Debug\netcoreapp2.0\sprinterBoardDAL.pdb
-D:\Priv\sprinterBoard\sprinterBoardDAL\obj\Debug\netcoreapp2.0\sprinterBoardDAL.csprojResolveAssemblyReference.cache
