@@ -67,18 +67,20 @@ namespace spriterBoardSPA
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             })
-            .UseStaticFiles()
+
             .UseAuthentication()
             .UseCors("AllowAll")
+            .UseStaticFiles()
             .UseMvc(routes =>
             {
                 routes.MapRoute(
                 name: "API",
                 template: "api/{controller}/{action}/{id?}"
                 );
-                routes.MapSpaFallbackRoute(
-                    name:"spa-fallback",
-                    defaults:"index.html"
+                routes.MapRoute(
+                    name: "spa-fallback",
+                    template: "{*url}",
+                    defaults: new { controller = "Home", action = "Index" }
                     );
             });
 
