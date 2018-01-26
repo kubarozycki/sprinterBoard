@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service'
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -8,7 +10,7 @@ import { TasksService } from '../tasks.service'
 })
 export class TaskListComponent implements OnInit {
 
-  constructor(private taskService: TasksService) { }
+  constructor(private taskService: TasksService, private router: Router) { }
   tasks: any[];
   ngOnInit() {
     this.getTasksList();
@@ -20,8 +22,10 @@ export class TaskListComponent implements OnInit {
       tasks => {
         this.tasks = tasks;
       },
-      err => {
-        console.log(err);
+      (err:HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.router.navigateByUrl('/account/login'); 
+        }
       });
   }
 
@@ -32,8 +36,10 @@ export class TaskListComponent implements OnInit {
       task => {
         this.getTasksList();
       },
-      err => {
-        console.log(err);
+      (err:HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.router.navigateByUrl('/account/login');
+        }
       }
     );
   }
@@ -45,8 +51,10 @@ export class TaskListComponent implements OnInit {
       task => {
         this.getTasksList();
       },
-      err => {
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.router.navigateByUrl('/account/login');
+        }
       }
     );
   }

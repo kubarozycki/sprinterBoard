@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse  } from '@angular/common/http';
 import {TasksService} from '../tasks.service';
 import {Router,ActivatedRoute } from '@angular/router';
 import { Task } from '../../model/task';
@@ -18,15 +19,15 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("ngoininit");
     this.route.params.subscribe(params => {
       this.taskService.getTask(params["id"]).subscribe(
       (response) => {
         this.model = new Task(response["id"], response["name"],response["description"]);
-        console.log(this.model);
       }, 
-       err => {
-           console.log(err);
+       (err:HttpErrorResponse) => {
+         if (err.status === 401) {
+           this.router.navigateByUrl('/account/login'); 
+         }
        });
    });
   }
@@ -59,7 +60,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   cancel():void{
-    // zrutowac do taskslist
+    this.router.navigateByUrl('/tasks');
   }
 
 }

@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { environment } from '../../environments/environment';
 import { Request } from '@angular/http/src/static_request';
 import { error } from 'util';
+import { Task } from '../model/task';
 @Injectable()
 export class TasksService {
   constructor(private http: Http) { }
@@ -17,8 +18,7 @@ export class TasksService {
     headers.append('Authorization', `Bearer ${authToken}`);
     return this.http.get(this.tasksUrl + "/GetAll/", {headers})
       .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-
+      .catch((error: any)=> Observable.throw(error));
   }
   getTask(id): Observable<any[]> {
 
@@ -35,7 +35,7 @@ export class TasksService {
   }
 
 
-  addTask(task: any): Observable<any> {
+  addTask(task: Task): Observable<any> {
     delete task.Id;
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let authToken = localStorage.getItem('auth_token');
@@ -43,18 +43,16 @@ export class TasksService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.tasksUrl, task, options)
       .map((response: Response) => { return response; })
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error));
   }
-  updateTask(task: any): Observable<any> {
+  updateTask(task: Task): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let authToken = localStorage.getItem('auth_token');
     headers.append('Authorization', `Bearer ${authToken}`);
     let options = new RequestOptions({ headers: headers });
     return this.http.put(this.tasksUrl, task, options)
       .map((response: Response) => { return response; })
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error));
   }
 
-
-  // TODO: add task model !!!
 }

@@ -63,7 +63,7 @@ namespace sprinterBoardDTO.Services.Concrete
         {
             var model = DatabaseContext.Tasks.Include(x=>x.User).FirstOrDefault(x => x.Id == task.Id);
             model.Description = task.Description;
-            model.Name = task.Description;
+            model.Name = task.Name;
             model.Status = task.Status;
             model.User = model.User;
             model.Order = task.Order;
