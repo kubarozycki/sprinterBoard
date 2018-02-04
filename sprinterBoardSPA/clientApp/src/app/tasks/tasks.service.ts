@@ -54,5 +54,15 @@ export class TasksService {
       .map((response: Response) => { return response; })
       .catch((error: any) => Observable.throw(error));
   }
+  removeTask(task: Task): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Authorization', `Bearer ${authToken}`);
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.tasksUrl+"/delete/"+task.Id, options)
+      .map((response: Response) => { return response; })
+      .catch((error: any) => Observable.throw(error));
+  }
+
 
 }

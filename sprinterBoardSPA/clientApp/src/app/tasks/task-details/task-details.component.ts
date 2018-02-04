@@ -59,6 +59,16 @@ export class TaskDetailsComponent implements OnInit {
     
   }
 
+  remove(): void {
+    this.taskService.removeTask(this.model).subscribe(
+      (response) => {
+        this.router.navigateByUrl('/tasks');
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
   cancel():void{
     this.router.navigateByUrl('/tasks');
   }

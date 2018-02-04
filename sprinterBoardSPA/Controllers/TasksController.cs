@@ -57,5 +57,13 @@ namespace TasksApi.Controllers
             var updated= await _taskService.UpdateAsync(task);
             return Ok(updated);
         }
+
+        [HttpDelete("[action]/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            _taskService.Remove(id);
+            return Ok();
+        }
+
     }
 }

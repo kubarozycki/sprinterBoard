@@ -10,7 +10,7 @@ import { User } from '../../model/user';
 })
 export class RegistrationComponent implements OnInit {
 
-  private user:User;
+  user:User;
   constructor(private accountService:AccountService,private router:Router) {
     this.user=new User();
    }
