@@ -21,6 +21,7 @@ export class TaskListComponent implements OnInit {
       .subscribe(
       tasks => {
         this.tasks = tasks;
+        localStorage.setItem("tasks", JSON.stringify(tasks));
       },
       (err:HttpErrorResponse) => {
         if (err.status === 401) {
@@ -34,6 +35,7 @@ export class TaskListComponent implements OnInit {
     task.status++;
     this.taskService.updateTask(task).subscribe(
       task => {
+        let temp= localStorage.getItem("tasks");
         this.getTasksList();
       },
       (err:HttpErrorResponse) => {

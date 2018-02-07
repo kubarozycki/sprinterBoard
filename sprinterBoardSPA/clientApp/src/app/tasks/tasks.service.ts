@@ -11,7 +11,6 @@ export class TasksService {
   private tasksUrl = environment.url + 'tasks'
 
   getTasks(): Observable<any[]> {
-
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let authToken = localStorage.getItem('auth_token');

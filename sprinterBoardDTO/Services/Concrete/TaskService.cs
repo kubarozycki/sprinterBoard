@@ -124,7 +124,15 @@ namespace sprinterBoardDTO.Services.Concrete
             return queue;
         }
 
-        
+        public void Remove(int  id)
+        {
+            var toRemove =DatabaseContext.Tasks.FirstOrDefault(x => x.Id == id);
+            
+            DatabaseContext.Tasks.Remove(toRemove);
+            DatabaseContext.SaveChangesAsync();
+        }
+
+
 
 
 

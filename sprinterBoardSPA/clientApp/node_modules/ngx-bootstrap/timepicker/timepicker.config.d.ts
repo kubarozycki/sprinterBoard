@@ -20,6 +20,8 @@ export declare class TimepickerConfig {
     showSpinners: boolean;
     /** show seconds in timepicker */
     showSeconds: boolean;
+    /** show minutes in timepicker */
+    showMinutes: boolean;
     /** minimum time user can select */
     min: Date;
     /** maximum time user can select */

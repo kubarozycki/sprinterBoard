@@ -1,7 +1,7 @@
 import { Time } from './timepicker.models';
 export declare function isValidDate(value?: string | Date): boolean;
 export declare function toNumber(value: string | number): number;
-export declare function isNumber(value: string): boolean;
+export declare function isNumber(value: any): value is number;
 export declare function parseHours(value: string | number, isPM?: boolean): number;
 export declare function parseMinutes(value: string | number): number;
 export declare function parseSeconds(value: string | number): number;

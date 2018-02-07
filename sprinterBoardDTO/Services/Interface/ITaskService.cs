@@ -12,5 +12,6 @@ namespace sprinterBoardDTO.Services.Interface
         Task<IEnumerable<TaskRowViewModel>> GetAllAsync(string userID);
         Task<long> AddAsync(TaskViewModel task);
         Task<TaskViewModel> UpdateAsync(TaskViewModel task);
+        void Remove(int task);
     }
 }

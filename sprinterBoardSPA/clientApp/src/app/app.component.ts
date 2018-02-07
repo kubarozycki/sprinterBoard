@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
 import { TaskListComponent } from '../app/tasks/task-list/task-list.component';
-
-@Component({
+import { FormsModule } from '@angular/forms';
+import {AppMode,AppState} from '../app/app.mode';
+@Component({  
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   isOnTasksComponent: boolean = false;
+  private onlineMode: boolean = false;
+  
+  set OnlineMode(val: boolean) {
+    AppMode.AppState = val ? AppState.Online : AppState.Offline;
+  }
+  get OnlineMode():boolean{
+    return this.onlineMode;
+  }
+
   title = 'app';
   openNav():void{
     document.getElementById("myNav").style.width = "100%";

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using sprinterBoardSPA.Helpers;
 
 namespace spriterBoardSPA
 {
@@ -12,7 +13,7 @@ namespace spriterBoardSPA
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://localhost:5000/")
+                .UseKestrel(options => options.ConfigureEndpoints())
                 .UseStartup<Startup>()
                 .Build();
     }
