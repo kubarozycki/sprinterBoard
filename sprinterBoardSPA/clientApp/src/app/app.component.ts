@@ -15,7 +15,7 @@ export class AppComponent {
     AppMode.AppState = val ? AppState.Online : AppState.Offline;
   }
   get OnlineMode():boolean{
-    return this.onlineMode;
+    return AppState.Online?true:false;
   }
 
   title = 'app';
