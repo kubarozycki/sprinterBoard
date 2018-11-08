@@ -50,7 +50,7 @@ namespace sprinterBoardDTO.Services.Concrete
             Task taskDAL = mapTaskViewModelToTask(task);
             taskDAL.User = 
                 DatabaseContext.AppUsers.
-                FirstOrDefault(x=>x.Id==task.UserId);
+                FirstOrDefault(x=>x.UserName==task.UserId);
 
             await DatabaseContext.Tasks.AddAsync(
                taskDAL
@@ -115,7 +115,7 @@ namespace sprinterBoardDTO.Services.Concrete
 
             DatabaseContext.Tasks
             .Include(b=>b.User)
-            .Where(x => x.Status == status && x.User.Id == userId)
+            .Where(x => x.Status == status && x.User.UserName == userId)
             .OrderBy(x => x.Order)
             .ToAsyncEnumerable()
             . ForEach(

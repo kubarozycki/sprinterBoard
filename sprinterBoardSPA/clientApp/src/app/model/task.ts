@@ -1,5 +1,5 @@
 export class Task {
-  constructor(id: any=null, name: string="", description: string="") {
+  constructor(id: any = null, name: string = "", description: string = "") {
     this.Id = id;
     this.Name = name;
     this.Description = description;
@@ -7,4 +7,5 @@ export class Task {
   Id: any;
   Name: string;
   Description: string;
+  UserId: string;
 }

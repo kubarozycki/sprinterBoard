@@ -3,12 +3,12 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/spriterBoardSPA",
+      "applicationUrl": "http://localhost/sprinterBoardSPA",
       "sslPort": 0
     },
     "iisExpress": {
-      "applicationUrl": "http://localhost:5000/",
-      "sslPort": 0
+      "applicationUrl": "http://localhost:55383/",
+      "sslPort": 44343
     }
   },
   "profiles": {
@@ -18,14 +18,6 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Pr"
       }
-    },
-    "spriterBoardSPA": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:5000/"
     }
   }
 }

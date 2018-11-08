@@ -11,7 +11,7 @@ import { AppMode,AppState } from '../../app.mode';
 export class TaskListComponent implements OnInit {
 
   constructor(private taskService: TasksService, private router: Router) { }
-  tasks: any[];
+  tasks: any;
   ngOnInit() {
     this.getTasksList();
   }

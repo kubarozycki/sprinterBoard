@@ -8425,7 +8425,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
+      "sha512": "C63hSHQifqDdejm8Kf0QuyRrCtZZtRhjSTpXoSjv8bsUKwzdVyCBhYc0P+R4dVWLZAu2AX/QNSLd+3LJSfbsFA==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -13671,30 +13671,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jakub.rozycki\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\alfa\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\Priv\\sprinterBoard\\sprinterBoardUT\\sprinterBoardUT.csproj",
+      "projectUniqueName": "C:\\Kuba\\sprinterBoard\\sprinterBoardUT\\sprinterBoardUT.csproj",
       "projectName": "sprinterBoardUT",
-      "projectPath": "D:\\Priv\\sprinterBoard\\sprinterBoardUT\\sprinterBoardUT.csproj",
-      "packagesPath": "C:\\Users\\jakub.rozycki\\.nuget\\packages\\",
-      "outputPath": "D:\\Priv\\sprinterBoard\\sprinterBoardUT\\obj\\",
+      "projectPath": "C:\\Kuba\\sprinterBoard\\sprinterBoardUT\\sprinterBoardUT.csproj",
+      "packagesPath": "C:\\Users\\alfa\\.nuget\\packages\\",
+      "outputPath": "C:\\Kuba\\sprinterBoard\\sprinterBoardUT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jakub.rozycki\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\alfa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13706,8 +13700,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\Priv\\sprinterBoard\\sprinterBoardDTO\\sprinterBoardDTO.csproj": {
-              "projectPath": "D:\\Priv\\sprinterBoard\\sprinterBoardDTO\\sprinterBoardDTO.csproj"
+            "C:\\Kuba\\sprinterBoard\\sprinterBoardDTO\\sprinterBoardDTO.csproj": {
+              "projectPath": "C:\\Kuba\\sprinterBoard\\sprinterBoardDTO\\sprinterBoardDTO.csproj"
             }
           }
         }

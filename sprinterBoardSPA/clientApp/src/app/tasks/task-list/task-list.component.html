@@ -1,42 +1,52 @@
 <table class="table borderless">
-    <colgroup>
-      <col style="width:33%;">
-      <col style="width:33%;">
-      <col style="width:33%;">
-    </colgroup>
-    <tbody>
-      <tr *ngFor="let task of tasks">
-        <td>
-          <div *ngIf="task.toDo"  class="panel panel-info" style="height:100%;width:100%;">
-            <div class="panel-heading">{{task.toDo.name}}</div>
-            <div class="panel-body">
-                  <img [routerLink]="['/tasks/taskdetails', task.toDo.id]" 
-                  class="img-responsive center-block" 
-                  src="../assets/images/Menu.ico" style="width:32px;height:32px;">
-            </div>
-            <div class="panel-footer">
-              <div class="row">
-                <div class="pull-right">
-                  <a (click)="moveRight(task.toDo)"  class="next round">&#8250;</a>
-                </div>
+  <colgroup>
+    <col style="width:33%;">
+    <col style="width:33%;">
+    <col style="width:33%;">
+  </colgroup>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>
+        <div *ngIf="task.toDo"
+             class="panel panel-info"
+             style="height:100%;width:100%;">
+          <div class="panel-heading">{{task.toDo.name}}</div>
+          <div class="panel-body">
+            <img [routerLink]="['/tasks/taskdetails', task.toDo.id]"
+                 class="img-responsive center-block"
+                 src="../assets/images/Menu.ico"
+                 style="width:32px;height:32px;">
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="pull-right">
+                <a (click)="moveRight(task.toDo)"
+                   class="next round">&#8250;</a>
               </div>
             </div>
           </div>
-        </td>
-      <td >
-        <div *ngIf="task.inProgress" class="panel panel-warning" style="height:100%;width:100%;">
+        </div>
+      </td>
+      <td>
+        <div *ngIf="task.inProgress"
+             class="panel panel-warning"
+             style="height:100%;width:100%;">
           <div class="panel-heading">{{task.inProgress.name}}</div>
           <div class="panel-body">
-              <img [routerLink]="['/tasks/taskdetails', task.inProgress.id]"
-              class="img-responsive center-block" src="../assets/images/Menu.ico" style="width:32px;height:32px;">
+            <img [routerLink]="['/tasks/taskdetails', task.inProgress.id]"
+                 class="img-responsive center-block"
+                 src="../assets/images/Menu.ico"
+                 style="width:32px;height:32px;">
           </div>
           <div class="panel-footer">
             <div class="row">
               <div class="pull-left">
-                <a (click)="moveLeft(task.inProgress)"  class="next round">&#8249;</a>
+                <a (click)="moveLeft(task.inProgress)"
+                   class="next round">&#8249;</a>
               </div>
-              <div class="pull-right" >
-                <a (click)="moveRight(task.inProgress)"  class="next round">&#8250;</a>
+              <div class="pull-right">
+                <a (click)="moveRight(task.inProgress)"
+                   class="next round">&#8250;</a>
               </div>
             </div>
           </div>
@@ -44,7 +54,9 @@
       </td>
       <td>
         <!--TODO wywalic te hrefy!!!-->
-        <div *ngIf="task.done" class="panel panel-success" style="height:100%;width:100%;">
+        <div *ngIf="task.done"
+             class="panel panel-success"
+             style="height:100%;width:100%;">
           <div class="panel-heading">{{task.done.name}}</div>
           <div class="panel-body">
             <img [routerLink]="['/tasks/taskdetails', task.done.id]"
@@ -55,14 +67,26 @@
           <div class="panel-footer">
             <div class="row">
               <div class="pull-left">
-                <a (click)="moveLeft(task.done)" class="next round">&#8249;</a>
+                <a (click)="moveLeft(task.done)"
+                   class="next round">&#8249;</a>
               </div>
             </div>
           </div>
         </div>
       </td>
-        
-      </tr>
-      
-    </tbody>
-  </table>
+
+    </tr>
+
+  </tbody>
+</table>
+<div *ngIf="!tasks || tasks.length<1">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Sprinterboard</h1>
+      <p>Simple PWA which allows you to schedule your tasks!</p>
+    </div>
+    <a routerLink="/tasks/taskdetails" class="btn btn-success" style="width:100%;"
+       (click)="closeNav()">Add first task</a>
+  </div>
+
+</div>
